@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const math = require("../math");
-router.get("/", function (req, res, next) {
+router.get("/", async function (req, res, next) {
   const { numToCalculate } = req.query;
   const isNumToCalculateProvided = Boolean(numToCalculate);
+  const calculatedValue = await math.fibonacciLoop(numToCalculate);
   if (isNumToCalculateProvided) {
     res.render("fibonacci", {
       title: "Calculate Fibonacci numbers",
       numToCalculate,
-      calculatedValue: math.fibonacci(numToCalculate),
+      calculatedValue,
     });
   } else {
     res.render("fibonacci", {
