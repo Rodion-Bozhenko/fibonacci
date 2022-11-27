@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+{{> navbar}}
+{{#if calculatedValue}}
+<p>Fibonacci for {{numToCalculate}} is {{calculatedValue}}</p>
+<hr />
+{{/if}}
+<p>Enter a number to see its' Fibonacci number</p>
+<form name='fibonacci' action='/fibonacci' method='get'>
+  <input type='text' name='numToCalculate' />
+  <input type='submit' value='Submit' />
+</form>
